@@ -12,12 +12,9 @@ body.active-modal {
     height: 45px;
     width: 130px;
     font-size: 15px;
-    
-    // left: 210px;
-    
-    box-shadow: inset 0px 0px 20px 0px #ff0000;
+     box-shadow: inset 0px 0px 20px 0px #ff0000;
     transition: 0.3s;
-  z-index: 1000000000;
+   z-index: 1000000000;
   
   &:hover{
     color: white;
@@ -28,7 +25,6 @@ body.active-modal {
   }
 
 }
-
 
 .modal,
 .overlay {
@@ -83,7 +79,6 @@ body.active-modal {
   align-items: center;
   position: relative;
   border: 3px solid #b1050b;
-
   padding: 2px;
   width: 183px;
 
@@ -94,7 +89,6 @@ body.active-modal {
 
   img {
     width: 100%;
-
     height: auto;
 
   }
@@ -141,7 +135,6 @@ body.active-modal {
   background-color: #f1f1f1;
   border: none;
   border-radius: 3px;
-
   cursor: pointer;
 
   .svg {
@@ -169,10 +162,6 @@ body.active-modal {
 }
 @media screen and (max-width: 460px) {
   
-
-
-    
-
   .btn-modal  {
           height: 35px;
           width: 100px;

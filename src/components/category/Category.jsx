@@ -25,9 +25,9 @@ const Category = ({ handleGenreChange, selectedGenre }) => {
             className={janr.trim() === selectedGenre ? style.active : ""}
             onClick={() => handleGenreChange(janr.trim())}
           >
-            {/* <Roll bottom cascade>  */}
+     
             {janr }
-            {/* </Roll> */}
+          
           </button>
         </div>
       ))}

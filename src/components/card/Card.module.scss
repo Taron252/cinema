@@ -111,21 +111,18 @@
 	position: absolute;
 	left: 8px;
 	bottom: 5px;
-	// color: #ffffff;
-	background: none;
+    background: none;
 	border: 2px solid #b1050b;
 	background: rgb(255, 0, 0);
-	// color: #ef082b;
-	height: 30px;
+    height: 30px;
 	width: 40px;
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	transition: .3s;
-	// box-shadow: inset 0px 0px 20px 0px #b1050b;
 	transition: .3s;
 	border: none;
+
 	&:hover {
 		color: white;
 		background-color: #870418;
@@ -166,8 +163,9 @@
 		border: none;
 		cursor: pointer;
 	}
-	&:active{
-		box-shadow:0 0 35px #ff0026;
+
+	&:active {
+		box-shadow: 0 0 35px #ff0026;
 	}
 
 	svg {
@@ -178,13 +176,11 @@
 
 .div1 {
 	margin: 0 auto;
-
 	width: 80%;
 	min-height: 700px;
 
 
 }
-
 .page {
 	margin: 25px;
 

@@ -16,6 +16,7 @@ const Catalog = ({
       [...Array(8)]
     ) : (
       <Card
+     
         data={filteredData}
         itemsPerPage={itemsPerPage}
         loading={isLoading}

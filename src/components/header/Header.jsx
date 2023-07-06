@@ -8,11 +8,6 @@ export const Header = ({ handleSearch }) => {
   function toggleSearchInputWidth() {
     let searchInput = document.querySelector(".searchinp");
 
-    // searchInput.style.width === "150px"
-    
-      // ? searchInput.style.width = "0px"
-      
-      // : searchInput.style.width = "150px"
       if(searchInput.style.width == "150px"){
         searchInput.style.width = "0px"
         searchInput.style.boxShadow="none"
