@@ -1,0 +1,183 @@
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+
+   position: sticky;
+   top: 85px;
+    color: #ffffff;
+    background: none;
+    border: 2px solid #ef082b;
+    height: 45px;
+    width: 130px;
+    font-size: 15px;
+    
+    // left: 210px;
+    
+    box-shadow: inset 0px 0px 20px 0px #ff0000;
+    transition: 0.3s;
+  z-index: 1000000000;
+  
+  &:hover{
+    color: white;
+    background-color: #ef082b;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+
+}
+
+
+.modal,
+.overlay {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+ 
+  position: fixed;
+  z-index: 2;
+
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #fffdfd;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 800px;
+  max-height: 500px;
+  min-width: 300px;
+  z-index: 3;
+  overflow-y: scroll;
+
+  h2 {
+    padding-bottom: 25px;
+    color: #ab0033;
+  }
+
+
+}
+
+.modal1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+}
+
+.modalDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border: 3px solid #b1050b;
+
+  padding: 2px;
+  width: 183px;
+
+  &:hover {
+    transform: scale(1.09);
+    transition: .3s;
+  }
+
+  img {
+    width: 100%;
+
+    height: auto;
+
+  }
+
+  .remove {
+    position: absolute;
+    right: 8px;
+    bottom: 5px;
+    color: #ffffff;
+    background: none;
+    border: 2px solid #b1050b;
+    height: 30px;
+    width: 40px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+    box-shadow: inset 0px 0px 20px 0px #b1050b;
+    transition: .3s;
+
+    &:hover {
+      color: white;
+      background-color: #ef082b;
+      transition: .3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    svg {
+      fill: #fff;
+
+    }
+
+  }
+
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 3px;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 3px;
+
+  cursor: pointer;
+
+  .svg {
+    fill: #ab0033;
+
+  }
+
+}
+
+.close-modal:hover {
+  background-color: #ab0033;
+  color: #f1f1f1;
+
+  .svg {
+    fill: #f1f1f1;
+
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .modal-content{
+    height: 70%;
+  }
+}
+@media screen and (max-width: 460px) {
+  
+
+
+    
+
+  .btn-modal  {
+          height: 35px;
+          width: 100px;
+          font-size: 13px;
+          margin-right: 15px;
+      }
+  
+}

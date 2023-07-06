@@ -1,0 +1,161 @@
+.h11 {
+    color: #fff6ff;
+    font-size: 50px;
+    letter-spacing: -3px;
+}
+
+*::selection {
+    background-color: #ef082b;
+    color: white;
+}
+
+.span11 {
+    color: #ef082b;
+}
+
+.p {
+    color: #7e6b7b;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.but-join {
+    color: white;
+    background-color: #ef082b;
+    height: 45px;
+    width: 130px;
+    font-size: 15px;
+    border: none;
+    transition: 0.3s;
+
+
+    &:hover {
+        color: #ffffff;
+        background: none;
+        border: 2px solid #ef082b;
+        cursor: pointer;
+        box-shadow: inset 0px 0px 20px 0px #ff0000;
+        transition: 0.3s;
+    }
+}
+
+.left-text {
+    margin-left: 5%;
+    margin-top: 8%;
+
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+
+}
+
+.aj-mas {
+    height: 347px;
+    width: 700px;
+    z-index: 1;
+    position: relative;
+
+}
+
+main::after {
+    box-shadow: inset 129px 5px 70px 70px #210f1f;
+    content: '';
+    display: block;
+    height: 394px;
+    width: 700px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.flexi {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+@media screen and (max-width: 1300px) {
+    main::after {
+        display: none;
+    }
+
+    main {
+        img {
+            opacity: 0.3;
+
+
+
+        }
+    }
+
+    .aj-mas {
+        width: 100%;
+        z-index: -20;
+        position: absolute;
+
+    }
+
+    .left-text {
+        // position: absolute;
+       margin-left: 20%;
+    }
+
+    .p {
+        color: rgb(216, 211, 211);
+    }
+
+    @media screen and (max-width: 920px) {
+        .left-text {
+
+            margin-left: 10%;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        .h11 {
+            font-size: 35px;
+
+        }
+
+        .left-text {
+
+            margin-left: 20%;
+            margin-top: 20%;
+        }
+    }
+
+    @media screen and (max-width: 630px) {
+        .left-text {
+
+            margin-left: 10%;
+        }
+
+        .p {
+            font-size: 13px;
+        }
+    }
+
+    @media screen and (max-width: 460px) {
+        .h11 {
+            font-size: 20px;
+            letter-spacing: 1px;
+
+            .p {
+                font-size: 9px;
+            }
+        }
+
+        .left-text {
+            margin-left: 5%;
+
+            button {
+                height: 35px;
+                width: 100px;
+                font-size: 13px;
+                margin-right: 15px;
+            }
+        }
+    }
+}

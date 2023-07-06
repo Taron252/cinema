@@ -1,0 +1,78 @@
+.genreFilter {
+
+    height: 55px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+
+    .btn_filtr {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+
+        button {
+
+            background-color: #310f2d;
+            border: none;
+            color: #a57171;
+            height: 100%;
+            margin-right: 22px;
+            position: relative;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            position: relative;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+
+            &:hover {
+                cursor: pointer;
+                color: #ffffff;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                background-color: #b1050b;
+                height: 5px;
+                width: 0;
+                left: 0;
+                bottom: -7px;
+                transition: 0.7s;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+        }
+    }
+}
+@media screen and (max-width:700px){
+    .genreFilter {
+    
+            .btn_filtr {
+                button{
+                    font-size: 10px;
+                }}
+        
+    }
+    @media screen and (max-width:460px){
+        .genreFilter {
+        
+                .btn_filtr {
+                    button{
+                        font-size: 8px;
+                    }}
+            
+        }
+        
+       
+    }
+   
+}

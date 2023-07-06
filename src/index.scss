@@ -1,8 +1,18 @@
-body{
-  background-color: aqua;
-
-///dfdf
-h1{
-  color: rgb(233, 73, 15);
+*{
+    margin: 0;
+  
 }
+
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: rgb(33,15,31);
+    background: linear-gradient(180deg, rgba(33,15,31,1) 27%, rgba(119,15,108,1) 64%, rgba(70,16,64,1) 96%);
+  transition: 1s;
+}
+a{
+    text-decoration: none;
+    color: white;
 }
