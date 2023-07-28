@@ -127,6 +127,17 @@ body.active-modal {
 
 }
 
+.modal-content::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #ab0033;
+}
+.modal-content::-webkit-scrollbar {
+  
+    width: 7px;
+ 
+  
+  background-color: #ffffff;
+}
 .close-modal {
   position: absolute;
   top: 10px;

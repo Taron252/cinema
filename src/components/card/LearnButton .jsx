@@ -12,7 +12,7 @@ const LearnButton = ({ item }) => {
   return (
     <button className={style.but_learn} onClick={handleItemClick}>
       <Link to={`/forward?items=${JSON.stringify([item])}`}>
-        <i id="slaq" className='fa fa-mail-forward'></i>
+        <i id="slaq" className="fa fa-mail-forward"></i>
       </Link>
     </button>
   );

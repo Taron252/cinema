@@ -2,20 +2,39 @@ import React, { useState } from "react";
 import style from "./Forward.module.scss";
 import Comment from "./Comment";
 import StarRating from "./StarRating ";
+import LikeButton from "../card/LikeButton";
 
-const Forward = ({ items }) => {
+const Forward = ({ items, toggleFavorite, forwardFavorites }) => {
   const [rating, setRating] = useState(0);
+  const [likedItems, setLikedItems] = useState([]); 
 
   const handleRatingChange = (newRating) => {
     setRating(newRating);
   };
+
+  const handleLike = (item) => {
+    if (!likedItems.includes(item.id)) {
+      setLikedItems([...likedItems, item.id]);
+      toggleFavorite(true, item); 
+    }
+  };
+
   return (
     <div className={style.forward}>
       {items && items.length > 0 ? (
         items.map((item, index) => (
           <div key={index} className={style.for_film}>
             <div className={style.name}>
-              <img src={item.img} alt="" />
+              <div className={style.like}>
+                <img src={item.img} alt="" />
+                <LikeButton
+                  item={item}
+                  isFavorite={forwardFavorites.some(
+                    (favorite) => favorite.id === item.id
+                  )}
+                  onToggle={(isFavorite) => handleLike(item)} 
+                />
+              </div>
               <div className={style.text}>
                 <h2>{item.title}</h2>
                 <p>{item.janr}</p>

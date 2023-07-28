@@ -19,7 +19,7 @@ const Category = ({ handleGenreChange, selectedGenre }) => {
 
     <div className={style.genreFilter} >
       {genres.map((janr, index) => (
-        <div className={style.btn_filtr}>
+        <div className={style.btn_filtr} key={index}>
           <button id="gyago"
             key={index}
             className={janr.trim() === selectedGenre ? style.active : ""}

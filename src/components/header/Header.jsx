@@ -8,7 +8,7 @@ export const Header = ({ handleSearch }) => {
   function toggleSearchInputWidth() {
     let searchInput = document.querySelector(".searchinp");
 
-      if(searchInput.style.width == "150px"){
+      if(searchInput.style.width === "150px"){
         searchInput.style.width = "0px"
         searchInput.style.boxShadow="none"
       }else {
@@ -70,7 +70,8 @@ export const Header = ({ handleSearch }) => {
             </div>
 
             <i id="fafa" className="fa fa-bell"></i>
-            <i id="fafa" className="fa-solid fa-user-large"></i>
+            <Link to={"/registration"}  href="#gyago">  <i id="fafa your" className="fa-solid fa-user-large"></i>  
+       </Link> 
           </ul>
         </LightSpeed>
       </div>

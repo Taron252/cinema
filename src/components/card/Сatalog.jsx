@@ -5,8 +5,10 @@ import Card from "./Card";
 const Catalog = ({
   isLoading,
   filterDataByGenre,
-  addFavorite,
+  updateIsFavorite,
   handleNavigation,
+  favorites,
+  toggleFavorite,
 }) => {
   const itemsPerPage = 12;
 
@@ -16,12 +18,13 @@ const Catalog = ({
       [...Array(8)]
     ) : (
       <Card
-     
+        favorites={favorites}
         data={filteredData}
         itemsPerPage={itemsPerPage}
         loading={isLoading}
-        addFavorite={addFavorite}
         handleNavigation={handleNavigation}
+        toggleFavorite={toggleFavorite}
+        updateIsFavorite={updateIsFavorite} // Pass the forwardFavorites prop
       />
     );
   };

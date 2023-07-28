@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import style from "./Pagination.module.scss";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -33,7 +33,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     setVisiblePageNumbers(visibleNumbers);
   };
 
-  React.useEffect(() => {
+ useEffect(() => {
     updateVisiblePageNumbers();
   }, [currentIndex]);
 

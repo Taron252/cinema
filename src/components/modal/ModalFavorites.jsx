@@ -4,7 +4,13 @@ import "./Modal.scss";
 import LearnButton from "../card/LearnButton ";
 import Bounce from "react-reveal/Bounce";
 
-const ModalFavorites = ({ favorites, removeFavorite, handleNavigation }) => {
+const ModalFavorites = ({
+  favorites,
+  handleNavigation,
+  forwardFavorites,
+  setForwardFavorites,
+  removeFavoriteFromModal,
+}) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -23,13 +29,25 @@ const ModalFavorites = ({ favorites, removeFavorite, handleNavigation }) => {
     handleNavigation(favorite);
   };
 
+  const handleRemoveFavorite = (favorite) => {
+    removeFavoriteFromModal(favorite);
+
+    const index = forwardFavorites.findIndex((item) => item.id === favorite.id);
+    if (index !== -1) {
+      setForwardFavorites((prevForwardFavorites) => {
+        const updatedForwardFavorites = [...prevForwardFavorites];
+        updatedForwardFavorites[index].isFavorite = false;
+        return updatedForwardFavorites;
+      });
+    }
+  };
+
   return (
     <>
-
-     <Bounce left duration={1700}>
-     <button onClick={toggleModal} className="btn-modal">
-        Favorites
-      </button>
+      <Bounce left duration={1700}>
+        <button onClick={toggleModal} className="btn-modal">
+          Favorites
+        </button>
       </Bounce>
       {isModalOpen && (
         <div className="modal">
@@ -47,13 +65,13 @@ const ModalFavorites = ({ favorites, removeFavorite, handleNavigation }) => {
                     />
                   </Link>
                   <button
-                    onClick={() => removeFavorite(favorite)}
+                    onClick={() => handleRemoveFavorite(favorite)}
                     className="remove"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       id="Isolation_Mode"
-                      data-name="Isolation Mode"
+                      dataName="Isolation Mode"
                       viewBox="0 0 24 24"
                       width="17"
                       height="16"
@@ -73,7 +91,7 @@ const ModalFavorites = ({ favorites, removeFavorite, handleNavigation }) => {
                 width="17"
                 height="16"
               >
-                <g id="_01_align_center" data-name="01 align center">
+                <g id="_01_align_center" dataName="01 align center">
                   <polygon points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414" />
                 </g>
               </svg>

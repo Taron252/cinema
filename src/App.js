@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Catalog from "./components/card/Сatalog";
@@ -10,6 +9,7 @@ import Slider from "./components/slider/Slider ";
 import Header from "./components/header/Header";
 import Section from "./components/header/Section";
 import ModalFavorites from "./components/modal/ModalFavorites";
+import Regi from "./components/registracion/Regi";
 
 function App() {
   const location = useLocation();
@@ -20,6 +20,12 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [forwardFavorites, setForwardFavorites] = useState(() =>
+    data.map((item) => ({
+      ...item,
+      isFavorite: favorites.some((favItem) => favItem.id === item.id),
+    }))
+  );
 
   const handleGenreChange = (genre) => {
     setSelectedGenre(genre);
@@ -38,18 +44,14 @@ function App() {
     );
     setSearchResults(filteredData);
   };
-
   const filterDataByGenre = () => {
     if (selectedGenre === "All") {
       return searchResults.length > 0 ? searchResults : data;
     } else {
-      return searchResults.length > 0
-        ? searchResults.filter((item) =>
-            item.janr.some((genre) => genre.trim() === selectedGenre)
-          )
-        : data.filter((item) =>
-            item.janr.some((genre) => genre.trim() === selectedGenre)
-          );
+      const filteredData = searchResults.length > 0
+        ? searchResults.filter((item) => item.janr && item.janr.some((genre) => genre.trim() === selectedGenre))
+        : data.filter((item) => item.janr && item.janr.some((genre) => genre.trim() === selectedGenre));
+      return filteredData;
     }
   };
 
@@ -62,7 +64,25 @@ function App() {
   const removeFavorite = (item) => {
     const updatedFavorites = favorites.filter((favorite) => favorite !== item);
     setFavorites(updatedFavorites);
+
+
+    setForwardFavorites((prevForwardFavorites) =>
+      prevForwardFavorites.map((favItem) =>
+        favItem.id === item.id ? { ...favItem, isFavorite: false } : favItem
+      )
+    );
   };
+
+  const toggleFavorite = (isFavorite, item) => {
+    if (isFavorite) {
+      addFavorite(item);
+      addForwardFavorite(item);
+
+    } else {
+      removeFavorite(item);
+    }
+  };
+
 
   const handleNavigation = (item) => {
     setModalOpen(false);
@@ -72,15 +92,33 @@ function App() {
     setModalOpen(!isModalOpen);
   };
 
+  const addForwardFavorite = (item) => {
+    if (!forwardFavorites.some((favorite) => favorite.id === item.id)) {
+      setForwardFavorites([...forwardFavorites, item]);
+    }
+  };
+  const removeFavoriteFromModal = (item) => {  
+    
+    removeFavorite(item);
+    
+    setForwardFavorites((prevForwardFavorites) =>
+      prevForwardFavorites.map((favItem) =>
+        favItem.id === item.id ? { ...favItem, isFavorite: false } : favItem
+      )
+    );
+  };
+
   return (
     <div>
       <Header handleSearch={handleSearch} />
-     
+
       <Section />
-      <Slider data={data} 
-        handleNavigation={handleNavigation}/>
-         <ModalFavorites
+      <Slider data={data} handleNavigation={handleNavigation} />
+      <ModalFavorites
         favorites={favorites}
+        forwardFavorites={forwardFavorites}
+        setForwardFavorites={setForwardFavorites}
+        removeFavoriteFromModal={removeFavoriteFromModal}
         removeFavorite={removeFavorite}
         handleNavigation={handleNavigation}
         isModalOpen={isModalOpen}
@@ -92,25 +130,37 @@ function App() {
         addFavorite={addFavorite}
       />
       <Routes>
-        <Route path="/forward" element={<Forward items={currentItems} />} />
+      <Route path="/registration" element={<Regi/>} />
+        <Route
+          path="/forward"
+          element={
+            <Forward
+              items={currentItems}
+              forwardFavorites={forwardFavorites}
+              favorites={favorites}
+              setForwardFavorites={setForwardFavorites}
+              toggleFavorite={toggleFavorite}
+
+            />
+          }
+        />
         <Route
           path="/"
           element={
             <Catalog
               isLoading={false}
               filterDataByGenre={filterDataByGenre}
-              addFavorite={addFavorite}
               handleNavigation={handleNavigation}
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+   
             />
           }
         />
       </Routes>
-      <Footer /> 
+      <Footer />
     </div>
   );
 }
 
-export default App;
-
-
-
+export default App;    

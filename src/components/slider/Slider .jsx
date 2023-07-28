@@ -35,7 +35,7 @@ const Slider = ({ data, handleNavigation }) => {
     <Zoom bottom duration={1700}>
       <div className={style.slider} id='sliderrrrrrrrr'>
         <button className={style.prevButton} onClick={goToPreviousSlide}>
-          <svg width="45px" height="45px" viewBox="0 0 1024 1024" class="icon" version="1" xmlns="http://www.w3.org/2000/svg"><path d="M659.2 917.333333l66.133333-66.133333L386.133333 512 725.333333 172.8 659.2 106.666667 256 512z" fill="#fff" /></svg>
+          <svg width="45px" height="45px" viewBox="0 0 1024 1024" className="icon" version="1" xmlns="http://www.w3.org/2000/svg"><path d="M659.2 917.333333l66.133333-66.133333L386.133333 512 725.333333 172.8 659.2 106.666667 256 512z" fill="#fff" /></svg>
         </button>
         <div className={style.slideContainer}>
           <div className={style.slidesWrapper}>
@@ -44,7 +44,7 @@ const Slider = ({ data, handleNavigation }) => {
           </div>
         </div>
         <button className={style.nextButton} onClick={goToNextSlide}>
-          <svg width="40px" height="40px" viewBox="0 0 45 45" version="1" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 48 48">
+          <svg width="40px" height="40px" viewBox="0 0 45 45" version="1" xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 48 48">
             <polygon fill="#fff" points="17.1,5 14,8.1 29.9,24 14,39.9 17.1,43 36,24" />
           </svg>
         </button>
