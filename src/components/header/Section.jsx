@@ -18,11 +18,7 @@ export const Section = () => {
             <p className="p">
               Wide selection of films with the best audio and visual quality
             </p>
-          </Roll>
-          <Bounce left duration={1700}>
-            <button className="but-join">Join Now</button>{" "}
-            
-          </Bounce>
+         </Roll> 
         </div>
 
         <Bounce right duration={1700}>

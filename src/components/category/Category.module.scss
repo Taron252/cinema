@@ -1,11 +1,12 @@
 .genreFilter {
     height: 55px;
-    width: 100%;
+    margin-left: 13%;
+    width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    row-gap: 10px;
+    row-gap: 5px;
 
     .btn_filtr {
 

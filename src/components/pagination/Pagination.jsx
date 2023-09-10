@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Pagination.module.scss";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -6,12 +6,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     { length: totalPages },
     (_, index) => index + 1
   );
-  const [visiblePageNumbers, setVisiblePageNumbers] = useState(
-    pageNumbers.slice(0, 7)
-  );
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePageNumberClick = (pageNumber) => {
+    setCurrentIndex(Math.max(pageNumber - 4, 0));
     onPageChange(pageNumber);
   };
 
@@ -25,23 +24,16 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     );
   };
 
-  const updateVisiblePageNumbers = () => {
-    const index = currentIndex;
-    const lastVisibleIndex = index + 6;
-    const visibleNumbers = pageNumbers.slice(index, lastVisibleIndex + 1);
-
-    setVisiblePageNumbers(visibleNumbers);
-  };
-
- useEffect(() => {
-    updateVisiblePageNumbers();
-  }, [currentIndex]);
+  const visiblePageNumbers = pageNumbers.slice(
+    currentIndex,
+    currentIndex + 7
+  );
 
   return (
     <div className={style.pagination}>
       <button
         className={currentPage === 1 ? style.disabled : ""}
-        onClick={() => onPageChange(1)}
+        onClick={() => handlePageNumberClick(1)}
         disabled={currentPage === 1}
       >
         First
@@ -71,7 +63,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       </button>
       <button
         className={currentPage === totalPages ? style.disabled : ""}
-        onClick={() => onPageChange(totalPages)}
+        onClick={() => handlePageNumberClick(totalPages)}
         disabled={currentPage === totalPages}
       >
         Last

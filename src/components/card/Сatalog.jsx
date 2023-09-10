@@ -4,27 +4,29 @@ import Card from "./Card";
 
 const Catalog = ({
   isLoading,
-  filterDataByGenre,
+  data,
+  itemsPerPage,
   updateIsFavorite,
   handleNavigation,
   favorites,
   toggleFavorite,
 }) => {
-  const itemsPerPage = 12;
-
   const renderItems = () => {
-    const filteredData = filterDataByGenre();
     return isLoading ? (
-      [...Array(8)]
+      [...Array(itemsPerPage)].map((_, index) => (
+        <div key={index} className={style.box}>
+          {/* Placeholder for the loading state */}
+        </div>
+      ))
     ) : (
       <Card
         favorites={favorites}
-        data={filteredData}
+        data={data}
         itemsPerPage={itemsPerPage}
         loading={isLoading}
         handleNavigation={handleNavigation}
         toggleFavorite={toggleFavorite}
-        updateIsFavorite={updateIsFavorite} // Pass the forwardFavorites prop
+        updateIsFavorite={updateIsFavorite}
       />
     );
   };

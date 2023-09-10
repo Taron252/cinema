@@ -22,9 +22,9 @@ export const Header = ({ handleSearch }) => {
       <div className="nav">
         <LightSpeed left duration={1700}>
           <div className="dzax">
-            <h1 className="hh">
-              Movie<span className="hh">Time</span>
-            </h1>
+          <Link to="/"> <h1 className="hh">
+              Movie<span className="hh">Time</span>     
+            </h1></Link>
             <ul className="vochxarh">
               <Link to="/" className="link">
                 <li>Home</li>
@@ -70,7 +70,7 @@ export const Header = ({ handleSearch }) => {
             </div>
 
             <i id="fafa" className="fa fa-bell"></i>
-            <Link to={"/registration"}  href="#gyago">  <i id="fafa your" className="fa-solid fa-user-large"></i>  
+            <Link to={"/login"}  href="#gyago">  <i id="fafa your" className="fa-solid fa-user-large"></i>  
        </Link> 
           </ul>
         </LightSpeed>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ContentLoader from "react-content-loader";
 import style from "./Card.module.scss";
 import Pagination from "../pagination/Pagination";
@@ -13,8 +13,9 @@ const Card = ({
   toggleFavorite,
   handleNavigation,
   favorites,
+
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = React.useState(1);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -29,11 +30,11 @@ const Card = ({
     <div className={style.card_form}>
       <div className={style.container}>
         {currentItems.map((item, index) => (
-          <Slide left key={index}>
+          <Slide left key={item.id}>
             <div className={style.box}>
               {loading ? (
                 <ContentLoader
-                  speed={1000}
+                  speed={100}
                   width={400}
                   height={460}
                   viewBox="0 0 400 460"
@@ -50,7 +51,7 @@ const Card = ({
                   <div className={style.imgBx}>
                     <img
                       className={style.movie_card__image}
-                      src={item.img}
+                      src={item.posterUrl}
                       alt=""
                     />
                   </div>
@@ -59,7 +60,7 @@ const Card = ({
                     <div className={style.button}>
                       <LearnButton
                         item={item}
-                        handleNavigation={handleNavigation}
+                        handleNavigation={() => handleNavigation(item)}
                       />
                       <LikeButton
                         item={item}

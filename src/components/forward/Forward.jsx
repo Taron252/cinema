@@ -4,9 +4,9 @@ import Comment from "./Comment";
 import StarRating from "./StarRating ";
 import LikeButton from "../card/LikeButton";
 
-const Forward = ({ items, toggleFavorite, forwardFavorites }) => {
+const Forward = ({ items, toggleFavorite, forwardFavorites, genres }) => {
   const [rating, setRating] = useState(0);
-  const [likedItems, setLikedItems] = useState([]); 
+  const [likedItems, setLikedItems] = useState([]);
 
   const handleRatingChange = (newRating) => {
     setRating(newRating);
@@ -15,7 +15,7 @@ const Forward = ({ items, toggleFavorite, forwardFavorites }) => {
   const handleLike = (item) => {
     if (!likedItems.includes(item.id)) {
       setLikedItems([...likedItems, item.id]);
-      toggleFavorite(true, item); 
+      toggleFavorite(true, item);
     }
   };
 
@@ -26,20 +26,26 @@ const Forward = ({ items, toggleFavorite, forwardFavorites }) => {
           <div key={index} className={style.for_film}>
             <div className={style.name}>
               <div className={style.like}>
-                <img src={item.img} alt="" />
+                <img src={item.posterUrl} alt="" />
                 <LikeButton
                   item={item}
                   isFavorite={forwardFavorites.some(
                     (favorite) => favorite.id === item.id
                   )}
-                  onToggle={(isFavorite) => handleLike(item)} 
+                  onToggle={(isFavorite) => handleLike(item)}
                 />
               </div>
               <div className={style.text}>
                 <h2>{item.title}</h2>
-                <p>{item.janr}</p>
+                <h3>{item.releaseYear}</h3>
                 <div className={style.span}>
-                  <span>{item.opis}</span>
+                  {item.genres && Array.isArray(item.genres) && (
+                    <p>
+                      Genres:{" "}
+                      {item.genres.map((genre) => genre.name).join(", ")}
+                    </p>
+                  )}
+                  <span className={style.span1}>{item.overview}</span>
                 </div>
               </div>
             </div>
@@ -47,9 +53,13 @@ const Forward = ({ items, toggleFavorite, forwardFavorites }) => {
             <StarRating rating={rating} onRatingChange={handleRatingChange} />
 
             <div className={style.frame}>
-              <a href={item.url}>
-                <img src={item.frame} alt="" />
-              </a>
+            <iframe
+  title={item.title}
+  width="920"
+  height="560"
+  src={`https://www.youtube.com/embed/${item.videos && item.videos.length > 0 ? item.videos[0].key : ''}`}
+  allowFullScreen
+></iframe>
               <Comment />
             </div>
           </div>

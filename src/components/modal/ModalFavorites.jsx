@@ -57,7 +57,7 @@ const ModalFavorites = ({
             <div className="modal1">
               {limitedFavorites.map((favorite, index) => (
                 <div key={index} className="modalDiv">
-                  <img src={favorite.img} alt="" />
+                  <img src={favorite.posterUrl} alt="" />
                   <Link to={`/forward?items=${JSON.stringify([favorite])}`}>
                     <LearnButton
                       item={favorite}
